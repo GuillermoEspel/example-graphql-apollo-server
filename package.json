@@ -1,0 +1,22 @@
+{
+  "name": "example-graphql-apollo-server",
+  "version": "1.0.0",
+  "author": "Guillermo Espel",
+  "license": "ISC",
+  "description": "Example Graphql Apollo API",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "apollo-server": "^2.24.0",
+    "graphql": "^15.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
