@@ -1,9 +1,4 @@
 const typeDefs = `
-  enum YesNo {
-    YES
-    NO
-  }
-
   type Address {
     street: String!
     city: String!
@@ -18,15 +13,13 @@ const typeDefs = `
 
   type Query {
     personCount: Int!
-    allPersons(phone: YesNo): [Person]!
-    findPerson(name: String!): Person
+    allPersons: [Person]!
     findPersonById(id: ID!): Person
   }
 
   type Mutation {
     addPerson(name: String!, phone: String, street: String!, city: String!): Person
     updatePerson(id: ID!, name: String, phone: String, street: String, city: String): Person
-    editPhone(name: String!, phone: String!): Person
   }
 `;
 export default typeDefs;
