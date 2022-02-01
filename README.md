@@ -4,7 +4,7 @@ Practice project with the following technologies:
 
 - Apollo Server
 - Graphql
-- BD: mocked JSON (provisional)
+- BD: MongoDB Atlas
 
 ## Start Application
 
