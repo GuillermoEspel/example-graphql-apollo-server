@@ -1,50 +1,27 @@
-import { UserInputError } from "apollo-server";
-import Person from "../models/person";
+import { login } from "../controllers/auth";
+import { createUser } from "../controllers/user";
+import {
+  personCount,
+  allPersons,
+  findPersonById,
+  addPerson,
+  updatePerson,
+} from "../controllers/person";
 
 const resolvers = {
   Query: {
-    personCount: () => Person.collection.countDocuments(),
-    allPersons: async (root, args) => {
-      return await Person.find();
-    },
-    findPersonById: async (root, args) => {
-      try {
-        const person = await Person.findById(args.id);
-        if (!person) return null;
-        return person;
-      } catch (error) {
-        throw new UserInputError(error.message, {
-          invalidArgs: args,
-        });
-      }
+    personCount,
+    allPersons,
+    findPersonById,
+    me: async (root, args, context) => {
+      return context.currentuser;
     },
   },
   Mutation: {
-    addPerson: async (root, args) => {
-      try {
-        const person = new Person({ ...args });
-        return await person.save();
-      } catch (error) {
-        throw new UserInputError(error.message, {
-          invalidArgs: args,
-        });
-      }
-    },
-    updatePerson: async (root, args) => {
-      try {
-        const person = await Person.findById(args.id);
-        if (!person) return null;
-        person.name = args.name || person.name;
-        person.phone = args.phone || person.phone;
-        person.street = args.street || person.street;
-        person.city = args.city || person.city;
-        return await person.save();
-      } catch (error) {
-        throw new UserInputError(error.message, {
-          invalidArgs: args,
-        });
-      }
-    },
+    addPerson,
+    updatePerson,
+    createUser,
+    login,
   },
   Person: {
     address: (root) => {
@@ -55,4 +32,5 @@ const resolvers = {
     },
   },
 };
+
 export default resolvers;
