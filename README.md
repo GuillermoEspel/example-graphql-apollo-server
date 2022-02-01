@@ -3,8 +3,15 @@
 Practice project with the following technologies:
 
 - Apollo Server
-- Graphql
+- GraphQL
 - BD: MongoDB Atlas
+- Auth service: JWT (JSON Web Token)
+
+## Install Dependencies
+
+```
+npm install
+```
 
 ## Start Application
 
@@ -12,6 +19,6 @@ Practice project with the following technologies:
 npm run start
 ```
 
-## Navigate to url:
+## Navigate to url (Apollo + GraphQL):
 
 http://localhost:4000/
